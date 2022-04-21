@@ -1,0 +1,48 @@
+#banner {
+  background-image: url("../assets//images/bg.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: inherit;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.spaceTop {
+  margin-top: -45;
+}
+
+#appoinment {
+  background-color: rgb(50, 51, 53);
+  background-image: url("../assets//images/chair.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: inherit;
+  background-blend-mode: multiply;
+}
+
+#Contact {
+  background-color: rgba(1, 6, 31, 0.801);
+  background-image: url("../assets//images/chair.png");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: inherit;
+  background-attachment: fixed;
+  padding: 50px;
+}
+.footer {
+  background-image: url("../assets/images/footer-bg.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: initial;
+  padding: 40px;
+}
+
+ul {
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
