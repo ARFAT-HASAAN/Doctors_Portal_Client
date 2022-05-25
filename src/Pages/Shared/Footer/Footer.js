@@ -1,9 +1,11 @@
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
 import "../../Style/Style.css";
 import { makeStyles } from "@mui/styles";
 
 const Footer = () => {
+
+  const theme = useTheme()
   const costomStyle = makeStyles({
     item: {
       textDecoration: "none",
@@ -14,22 +16,35 @@ const Footer = () => {
     botton: {
       color: "white",
     },
+
+     container: { 
+
+     [theme.breakpoints.up("md")]: {
+        width : "100%", height: "40vh"
+      }, 
+    },
+
+    div: {
+      [theme.breakpoints.up("md")]: {
+        display: "flex", flexDirection: "column", justifyContent:"center", alignItems: "center", height : "40vh"   
+       }
+    }
   });
 
-  const { item, botton } = costomStyle();
+  const { item, botton, div, container } = costomStyle();
   return (
-    <div className="footer">
-      <Container>
-        <Grid container spacing={2} columns={12}>
+    <Box  className={container}  id="footer" >
+      <Container >
+        <Box   className={div}  >
+          <Grid container spacing={2} columns={12}>
           <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
             <Box>
               <Stack gap={3}>
-                <Typography
-                  variant="h5"
-                  sx={{ color: "#15D1C1", fontWeight: "bold" }}
+                <h4
+                className="blue"
                 >
-                  Services
-                </Typography>
+                  SERVICES
+                </h4>
 
                 <ul>
                   <li>
@@ -46,7 +61,7 @@ const Footer = () => {
                   </li>
                   <li>
                     {" "}
-                    <a className={item} href="#" Blogs></a>{" "}
+                    <a className={item} href="#">Blogs</a>{" "}
                   </li>
                   <li>
                     {" "}
@@ -67,12 +82,11 @@ const Footer = () => {
           <Grid item xs={8} sm={6} md={4} lg={4} xl={4}>
             <Box>
               <Stack gap={3}>
-                <Typography
-                  variant="h5"
-                  sx={{ color: "#15D1C1", fontWeight: "bold" }}
+                <h4
+                className="blue"
                 >
-                  Oral Health
-                </Typography>
+                  ORAL HEALTH
+                </h4>
                 <ul>
                   <li>
                     {" "}
@@ -108,43 +122,38 @@ const Footer = () => {
           <Grid item xs={8} sm={6} md={4} lg={4} xl={4}>
             <Box>
               <Stack gap={3}>
-                <Typography
-                  variant="h5"
-                  sx={{ color: "#15D1C1", fontWeight: "bold" }}
+                <h4
+                  className="blue"
                 >
-                  Our Address
-                </Typography>
-                <Typography className={item}>
+                  OUR ADDRESS
+                </h4>
+                <p className={item}>
                   New York -101010 Hudson Beil
-                </Typography>
+                </p>
                 <Box>
-                  <Typography className={item}>Call Now</Typography>
-                  <Button
-                    sx={{
-                      backgroundColor: "#15D1C1",
-                      color: "white",
-                      padding: "7px 22px",
-                      fontWeight: "bold",
-
-                      width: "100%",
-                    }}
+                  <p className={item}>Call Now</p>
+                  <button className="btn"
+                    
                   >
                     {" "}
                     +203923820{" "}
-                  </Button>
+                  </button>
                 </Box>
               </Stack>
             </Box>
           </Grid>
-        </Grid>
-
-        <Typography
-          sx={{ textAlign: "center", marginTop: "30px", color: "gray" }}
+          </Grid> 
+          
+          <Box>
+          <p
+          sx={{ textAlign: "center", marginTop: "20px", color: "gray" }}
         >
           Copyright All right Reserved
-        </Typography>
+        </p>
+        </Box>
+       </Box>  
       </Container>
-    </div>
+    </Box>
   );
 };
 

@@ -1,20 +1,41 @@
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, styled, useTheme, Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, tableCellClasses } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import UseAuth from "../../context/AuthContext";
 import Calender from "../../Shared/Date/Calender";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
 const Appoentments = () => {
+
+
+  
+ const theme = useTheme();
+  const costomDiv = makeStyles({
+
+    container: { 
+
+     [theme.breakpoints.up("md")]: {
+        width : "100%", height: "100vh"
+      }, 
+    },
+
+    div: {
+      [theme.breakpoints.up("md")]: {
+           display : "grid", placeItems: "center",  height: "100vh", justifyItems: "center" 
+       }
+    }
+
+   
+ } )
+  
+  const {div, container} = costomDiv({})
+
+
+
   const { user } = UseAuth();
   const [datas, setDatas] = useState([]);
 
+  console.log(datas)
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -48,19 +69,24 @@ const Appoentments = () => {
   }));
 
   return (
-    <Box>
-      <Grid container gap={3} columns={13}>
+    <Box className={container}>
+      <Container className={div}>
+       <Grid container gap={3} columns={13}>
         <Grid item xs={13} sm={13} md={6} lg={6}>
+           <h3 >Sellect your date to see your appoeinment </h3>
           <Calender date={date} setDate={setDate}></Calender>
         </Grid>
         <Grid item xs={13} sm={13} md={6} lg={6}>
+           <h3>Your sellected appoinments list.</h3>
           <TableContainer component={Paper}>
+           
             <Table sx={{}} aria-label="customized table">
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Name</StyledTableCell>
                   <StyledTableCell align="right">Schedule</StyledTableCell>
-                  <StyledTableCell align="right">Action</StyledTableCell>
+                  <StyledTableCell align="right">Services</StyledTableCell>
+                  <StyledTableCell align="right">action</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -73,6 +99,9 @@ const Appoentments = () => {
                     <StyledTableCell align="right">
                       {data.serviceName}
                     </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {data?.payment?.amount ? <button disabled className="btn">Paid</button> : <Link to={`/dashbord/pay/${data._id}`}>  <button className="btn"> Procced to pay   </button>  </Link>}
+                    </StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
@@ -80,6 +109,8 @@ const Appoentments = () => {
           </TableContainer>
         </Grid>
       </Grid>
+      </Container>
+      
     </Box>
   );
 };

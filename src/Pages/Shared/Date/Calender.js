@@ -4,15 +4,18 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import StaticDatePicker from "@mui/lab/StaticDatePicker";
-import { Paper } from "@mui/material";
+import { Paper, Box, Typography } from "@mui/material";
 
 const Calender = ({ date, setDate }) => {
   return (
-    <Paper>
+    <Box> 
+      
+       <Paper >
+       
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <StaticDatePicker
-          orientation="landscape"
-          displayStaticWrapperAs="desktop"
+          orientation="portrait"
+          displayStaticWrapperAs="mobile"
           value={date}
           openTo="day"
           shouldDisableDate={isWeekend}
@@ -23,6 +26,8 @@ const Calender = ({ date, setDate }) => {
         />
       </LocalizationProvider>
     </Paper>
+    </Box>
+   
   );
 };
 

@@ -1,22 +1,50 @@
-import { Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Button, Container, Grid, Stack, Typography, useTheme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import React from "react";
 import tretment from "../../assets/images/treatment.png";
 
 const Terms = () => {
+
+ const theme = useTheme();
+  const costomDiv = makeStyles({
+
+    container: { 
+
+     [theme.breakpoints.up("md")]: {
+        width : "100%", height: "100vh"
+      }, 
+    },
+
+    div: {
+      [theme.breakpoints.up("md")]: {
+           display : "grid", placeItems: "center",  height: "100vh", justifyItems: "center" 
+       }
+    }
+
+   
+ } )
+  
+  const {div, container} = costomDiv({})
+
+
+
+
   return (
-    <Box sx={{ mb: 19 }}>
-      <Container>
+    <Box className={container} id="verticleHeight" >
+      <Container className={div} id="aboute"   >
+        <Box>
+        
         <Grid sx={{ alignItems: "center" }} gap={6} container columns={13}>
           <Grid item xs={13} sm={13} md={6} lg={6}>
             <img style={{ width: "100%" }} src={tretment} alt="treatment" />
           </Grid>
           <Grid item xs={13} sm={13} md={6} lg={6}>
             <Stack spacing={5}>
-              <Typography sx={{ fontWeight: "bold", fontSize: "2.5rem" }}>
+              <h1  >
                 Exceptional Dental Care,on Your Terms
-              </Typography>
-              <Typography color={"slategrey"}>
+              </h1>
+              <p className="gray">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
                 quo minus facilis animi dolore ullam iure itaque, delectus
                 deleniti tempore qui, fuga repudiandae earum inventore, ipsa
@@ -26,21 +54,18 @@ const Terms = () => {
                 aperiam. Culpa soluta perferendis eius omnis minus? Dolorum,
                 esse consectetur at dolores laborum alias? Numquam autem eum
                 temporibus quam aspernatur asperiores rerum voluptatibus ex
-              </Typography>
+              </p>
               <Box>
-                <Button
-                  sx={{
-                    backgroundColor: "#15D1C1",
-                    width: "160px",
-                    color: "white",
-                  }}
+                <button className="btn"
+                 
                 >
                   Learn more
-                </Button>
+                </button>
               </Box>
             </Stack>
           </Grid>
         </Grid>
+        </Box>
       </Container>
     </Box>
   );

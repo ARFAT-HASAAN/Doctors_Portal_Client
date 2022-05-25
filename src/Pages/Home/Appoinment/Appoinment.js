@@ -1,48 +1,79 @@
-import { Button, Grid, Stack, Typography } from "@mui/material";
+import { Container, Grid, Stack, useTheme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import React from "react";
 import doctor from "../../assets/images/doctor.png";
 import "../../Style/Style.css";
+
+
 const Appoinment = () => {
+
+
+   const theme = useTheme();
+  const costomDiv = makeStyles({
+
+    container: { 
+
+     [theme.breakpoints.up("md")]: {
+        width : "100%", height: "50vh"
+      }, 
+    },
+
+    div: {
+      [theme.breakpoints.up("md")]: {
+           display : "grid", placeItems: "center",  height: "55vh", justifyItems: "center" 
+       }
+    },
+   space: {
+      [theme.breakpoints.down("md")]: {
+          padding:"20px 0", 
+       }
+    }
+
+   
+ } )
+  
+  const {div, container, space} = costomDiv({})
+
+
+
   return (
-    <Box sx={{ my: 10 }} id="appoinment">
-      <Grid container columns={12} sx={{ alignItems: "center" }}>
-        <Grid item xs={13} sm={12} md={6} lg={6}>
+    <Box className={[container, space]} id="appoinment">
+      <Container className={div} >
+       <Grid container columns={12} >
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           <Box>
             <img
-              style={{ display: "block", marginTop: "-220px" }}
-              width={"100%"}
+              style={{ width: "350px", backgroundColor: "white", border : "4px solid #00D1E3 " }}
               src={doctor}
-              alt=""
+              alt="doctor "
             />
           </Box>
         </Grid>
         <Grid item xs={13} sm={12} md={6} lg={6}>
-          <Box sx={{ padding: "10px" }}>
+          <Box sx={{ padding: "0px" }}>
             <Stack spacing={3}>
-              <Typography sx={{ fontWeight: "bold", color: "#15D1C1" }}>
+              <h4 className="blue" >
                 APPOINMENT
-              </Typography>
-              <Typography sx={{ fontSize: "2rem", color: "white" }}>
+              </h4>
+              <h2 className="white" >
                 Make an appoinment <br /> <span>Today</span>
-              </Typography>
-              <Typography sx={{ fontSize: "14px", color: "white" }}>
+              </h2>
+              <p className="white">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
                 quibusdam <br /> temporibus magnam
-              </Typography>
-              <Button
-                sx={{
-                  backgroundColor: "#15D1C1",
-                  width: "160px",
-                  color: "white",
-                }}
+              </p>
+              <button className="btn"
+                
               >
                 Learn More
-              </Button>
+              </button>
             </Stack>
           </Box>
         </Grid>
       </Grid>
+      </Container>
+      
     </Box>
   );
 };

@@ -21,6 +21,8 @@ import Appoentments from "./Appoentments/Appoentments";
 import UseAuth from "../context/AuthContext";
 import { makeStyles } from "@mui/styles";
 
+import logo from "../assets/images/logo.png"
+
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -58,17 +60,18 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <Box>
-      <Button>
+   
         {" "}
         <Link className={homeRoute} to={"/"}>
-          DoctorPortal{" "}
+          <img style={{width : "70px", paddingTop: "15px"}} src={logo} alt="logo images" />
         </Link>
-      </Button>
+    
 
-      <Toolbar />
       <List>
-        <ListItem button>
-          <ListItemIcon></ListItemIcon>
+
+
+        <ListItem >
+          
           <ListItemText>
             {" "}
             <Link className={route} to={"/dashbord"}>
@@ -79,7 +82,7 @@ function ResponsiveDrawer(props) {
         </ListItem>
 
         <ListItem button>
-          <ListItemIcon></ListItemIcon>
+         
           <ListItemText>
             {" "}
             <Link className={route} to={"Allpatient"}>
@@ -124,7 +127,7 @@ function ResponsiveDrawer(props) {
       <AppBar
         position="fixed"
         sx={{
-          background: "#15D1C1",
+          background: "black",
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
@@ -139,9 +142,9 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            DashBoord
-          </Typography>
+          <h4 >
+            Dashbord
+          </h4>
         </Toolbar>
       </AppBar>
       <Box
@@ -159,12 +162,12 @@ function ResponsiveDrawer(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", sm: "none", textAlign: "left" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              background: "#15D1C1",
-              color: "white",
+              background: "black",
+              color: "black",
             },
           }}
         >
@@ -173,12 +176,12 @@ function ResponsiveDrawer(props) {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block" },
+            display: { xs: "none", sm: "block", textAlign : 'left'},
 
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              background: "#15D1C1",
+              background: "black",
               color: "white",
             },
           }}

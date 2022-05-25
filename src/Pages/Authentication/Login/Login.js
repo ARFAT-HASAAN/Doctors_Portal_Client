@@ -1,9 +1,9 @@
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
 import React, { useRef } from "react";
 import loginPic from "../../assets/images/login.png";
 import { makeStyles } from "@mui/styles";
 import UseAuth from "../../context/AuthContext";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const StyleClass = makeStyles({
@@ -50,7 +50,8 @@ const Login = () => {
 
   return (
     <Box style={{ marginTop: "70px" }}>
-      <Grid sx={{ alignItems: "center" }} container gap={4} columns={13}>
+      <Container>
+        <Grid sx={{ alignItems: "center" }} container gap={5} columns={13}>
         <Grid item xs={13} sm={13} md={6} lg={6}>
           <Card sx={{ width: "600px", margin: "auto", padding: "100px" }}>
             <Typography
@@ -90,7 +91,9 @@ const Login = () => {
               >
                 Login
               </Button>
-            </form>
+              </form>
+
+               <h5 className="spaceing" >Don't have account? Please  <Link to={"/Regester"}> Regester </Link> </h5>
           </Card>
         </Grid>
 
@@ -102,7 +105,8 @@ const Login = () => {
             alt="login"
           />
         </Grid>
-      </Grid>
+      </Grid> </Container>
+      
     </Box>
   );
 };

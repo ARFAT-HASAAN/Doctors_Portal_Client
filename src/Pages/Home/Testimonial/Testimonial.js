@@ -7,39 +7,54 @@ import {
   Card,
   CardContent,
   Stack,
+  useTheme,
 } from "@mui/material";
 import peopleOne from "../../assets/images/people-1.png";
 import peopleTwo from "../../assets/images/people-2.png";
 import peopleTree from "../../assets/images/people-3.png";
+import { makeStyles } from "@mui/styles";
 
 const Testimonial = () => {
-  return (
-    <Box sx={{ mb: 8 }}>
-      <Container>
-        <Box width={"320px"}>
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: "bold",
 
-              color: "#15D1C1",
-              padding: "3px 0",
-              marginTop: "30px",
-            }}
-          >
+ 
+   const theme = useTheme();
+  const costomDiv = makeStyles({
+
+    container: { 
+
+     [theme.breakpoints.up("md")]: {
+        width : "100%", height: "100vh"
+      }, 
+    },
+
+    div: {
+      [theme.breakpoints.up("md")]: {
+           display : "grid", placeItems: "center",  height: "100vh", justifyItems: "center" 
+       }
+    }
+
+   
+ } )
+  
+  const {div, container} = costomDiv({})
+ 
+
+
+
+  return (
+    <Box className={container} id="verticleHeight" >
+      <Container className={div} >
+      
+        <Box>
+            <Box>
+          <h4 className="blue semibiseHeader">
             TESTIMONIAL
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: "medium",
-              fontSize: "2.3rem",
-              padding: "14px 0",
-              marginBottom: "30px",
-            }}
+          </h4>
+            <h3
+              className="divspace"
           >
             What"s Our Patients Says
-          </Typography>
+          </h3>
         </Box>
 
         <Grid container gap={2} columns={13}>
@@ -47,12 +62,12 @@ const Testimonial = () => {
             <Card sx={{ padding: "16px" }}>
               <CardContent>
                 <Stack spacing={4}>
-                  <Typography color={"slategray"}>
+                  <p className="gray">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laborum quibusdam temporibus magnam dolore provident
                     recusandae alias quo. Eos incidunt, error aliquam unde enim
                     facilis culpa corrupti cum ex totam rem!
-                  </Typography>
+                  </p>
                   <Box
                     gap={4}
                     sx={{
@@ -63,16 +78,12 @@ const Testimonial = () => {
                     <img src={peopleOne} alt="" />
 
                     <Stack>
-                      <Typography
-                        color={"#15D1C1"}
-                        fontWeight={"bold"}
-                        variant="h6"
-                      >
+                      <h5 className="blue" >
                         DR.Caudi
-                      </Typography>
-                      <Typography fontSize={"14px"} color={"slategrey"}>
+                      </h5>
+                      <p className="gray">
                         California
-                      </Typography>
+                      </p>
                     </Stack>
                   </Box>
                 </Stack>
@@ -83,12 +94,12 @@ const Testimonial = () => {
             <Card sx={{ padding: "16px" }}>
               <CardContent>
                 <Stack spacing={4}>
-                  <Typography color={"slategrey"}>
+                  <p className="gray">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laborum quibusdam temporibus magnam dolore provident
                     recusandae alias quo. Eos incidunt, error aliquam unde enim
                     facilis culpa corrupti cum ex totam rem!
-                  </Typography>
+                  </p>
                   <Box
                     gap={4}
                     sx={{
@@ -99,16 +110,12 @@ const Testimonial = () => {
                     <img src={peopleTwo} alt="" />
 
                     <Stack>
-                      <Typography
-                        color={"#15D1C1"}
-                        fontWeight={"bold"}
-                        variant="h6"
-                      >
+                      <h5 className="blue" >
                         DR.Caudi
-                      </Typography>
-                      <Typography fontSize={"14px"} color={"slategrey"}>
+                      </h5>
+                      <p className="gray" >
                         California
-                      </Typography>
+                      </p>
                     </Stack>
                   </Box>
                 </Stack>
@@ -119,12 +126,12 @@ const Testimonial = () => {
             <Card sx={{ padding: "16px" }}>
               <CardContent>
                 <Stack spacing={4}>
-                  <Typography color={"slategrey"}>
+                  <p className="gray">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laborum quibusdam temporibus magnam dolore provident
                     recusandae alias quo. Eos incidunt, error aliquam unde enim
                     facilis culpa corrupti cum ex totam rem!
-                  </Typography>
+                  </p>
                   <Box
                     gap={4}
                     sx={{
@@ -135,16 +142,12 @@ const Testimonial = () => {
                     <img src={peopleTree} alt="" />
 
                     <Stack>
-                      <Typography
-                        color={"#15D1C1"}
-                        fontWeight={"bold"}
-                        variant="h6"
-                      >
+                      <h5 className="blue">
                         DR.Caudi
-                      </Typography>
-                      <Typography fontSize={"14px"} color={"slategrey"}>
+                      </h5>
+                      <p className="gray">
                         California
-                      </Typography>
+                      </p>
                     </Stack>
                   </Box>
                 </Stack>
@@ -152,6 +155,8 @@ const Testimonial = () => {
             </Card>
           </Grid>
         </Grid>
+        </Box>
+       
       </Container>
     </Box>
   );

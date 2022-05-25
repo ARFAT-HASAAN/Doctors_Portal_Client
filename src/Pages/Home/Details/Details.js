@@ -35,12 +35,12 @@ const Details = () => {
               />
 
               <Stack spacing={1}>
-                <Typography color={"white"} fontWeight={"bold"} variant="h6">
+                <h4  className="white" >
                   Opening Hours
-                </Typography>
-                <Typography fontSize={"14px"} color={"white"}>
+                </h4>
+                <p className="white" >
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </Typography>
+                </p>
               </Stack>
             </Box>
           </Grid>
@@ -68,12 +68,12 @@ const Details = () => {
                 style={{ color: "white", fontSize: "5rem" }}
               />
               <Stack spacing={1}>
-                <Typography color={"white"} fontWeight={"bold"} variant="h6">
+                <h4 className="white" >
                   Opening Hours
-                </Typography>
-                <Typography fontSize={"14px"} color={"white"}>
+                </h4>
+                <p className="white" >
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </Typography>
+                </p>
               </Stack>
             </Box>
           </Grid>
@@ -101,17 +101,13 @@ const Details = () => {
                 style={{ color: "white", fontSize: "5rem" }}
               />
               <Stack spacing={1}>
-                <Typography
-                  color="white"
-                  fontSize="large"
-                  fontWeight={"bold"}
-                  variant="h6"
+                <h4 className="white"
                 >
                   Opening Hours
-                </Typography>
-                <Typography fontSize={"14px"} color={"white"}>
+                </h4>
+                <p  className="white" >
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </Typography>
+                </p>
               </Stack>
             </Box>
           </Grid>

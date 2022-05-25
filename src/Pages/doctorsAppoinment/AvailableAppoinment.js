@@ -1,82 +1,132 @@
-import React, { useState } from "react";
+import React from "react";
 import AppoinmentModal from "./AppoinmentModal";
-import { Container, Grid, Typography, Box, Alert } from "@mui/material";
-import { textAlign } from "@mui/system";
-
+import { Container, Grid, Box, useTheme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+ import { ToastContainer, toast } from 'react-toastify';
 const AvailableAppoinment = ({ date }) => {
-  const [isPassData, setIspassData] = useState(false);
+
 
   const appointments = [
     {
       key: 1,
-      title: "Theet ortho dontic",
+      title: "Theet Orthodontics",
       space: 19,
+      price: 20,
       watchTime: "8:00 am - 9:00 pm",
     },
     {
       key: 2,
-      title: "Theet ortho dontic",
-      space: 19,
+      title: "Cosmetic Dentistry",
+      space: 1,
+      price: 10,
+
       watchTime: "8:00 am - 9:00 pm",
     },
     {
       key: 3,
-      title: "Theet ortho dontic",
-      space: 19,
+      title: "Theeth Cleaning",
+      space: 2,
+      price: 30,
+
       watchTime: "8:00 am - 9:00 pm",
     },
     {
       key: 4,
-      title: "Theet ortho dontic",
+      title: "cavity Protection",
+
       space: 19,
+      price: 20,
+
       watchTime: "8:00 am - 9:00 pm",
     },
     {
       key: 5,
-      title: "Theet ortho dontic",
-      space: 19,
+      title: "Theet fixing",
+      space: 9,
+      price: 50,
+
       watchTime: "8:00 am - 9:00 pm",
     },
     {
       key: 6,
-      title: "Theet ortho dontic",
+      title: "Teeth wasing",
       space: 19,
+      price: 7,
+
       watchTime: "8:00 am - 9:00 pm",
     },
   ];
 
-  return (
-    <Box sx={{ margin: "20px 0px" }}>
-      <Typography
-        sx={{
-          color: "#15D1C1",
-          textAlign: "center",
-          fontSize: "2rem",
-          fontWeight: "bold",
-          padding: "30px 0px",
-          marginBottom: "20px",
-        }}
-      >
-        {" "}
-        Available appoinment on {date.toDateString()}
-      </Typography>
-      <Container>
-        {isPassData && (
-          <Alert severity="success">
-            Congratulation! Your data seccessfully passed.
-          </Alert>
-        )}
 
-        <Grid container columns={13} gap={5}>
+
+       const theme = useTheme();
+  const costomDiv = makeStyles({
+
+    container: { 
+
+     [theme.breakpoints.up("md")]: {
+        width : "100%", height: "100vh"
+      }, 
+    },
+
+    div: {
+      [theme.breakpoints.up("md")]: {
+           display : "grid", placeItems: "center",  height: "100vh", justifyItems: "center" 
+       }
+    },
+ 
+    spaceing: {
+      [theme.breakpoints.down("md")]: {
+          
+        marginTop : "20"
+      }
+    }
+   
+ } )
+  
+  const {div, container} = costomDiv({})
+
+
+  const notify = () => toast.success(`Congrats? You have been create an appoinment on ${date.toDateString()}, `);
+
+  return (
+    <Box className={container} >
+      
+      <Container className={div} >
+        <Box className={div} >  
+          <ToastContainer
+            position="top-center"
+autoClose={1000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+            pauseOnHover
+          
+
+/>
+          
+          <h3 className='spaceing'>
+        Available Appoinment on {date.toDateString()}
+      </h3>
+          
+          <h3 className="blue semibiseHeader" >Book your appoinment from here</h3>
+          
+          <Grid container columns={13} gap={5}>
+            
           {appointments.map((appoinment) => (
             <AppoinmentModal
               appoinment={appoinment}
+              toast={notify}
               key={appoinment.key}
               date={date}
-              setIspassData={setIspassData}
+             
             ></AppoinmentModal>
           ))}
-        </Grid>
+          </Grid>
+          </Box>
       </Container>
     </Box>
   );

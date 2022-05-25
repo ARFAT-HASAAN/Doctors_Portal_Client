@@ -1,102 +1,209 @@
-import SendIcon from "@mui/icons-material/Send";
+
 import {
   Box,
-  Button,
-  Stack,
+  Container,
   TextField,
-  Typography,
   useTheme,
+  CircularProgress
 } from "@mui/material";
+ import { ToastContainer, toast } from 'react-toastify';
+
 import { makeStyles } from "@mui/styles";
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import "../../Style/Style.css";
+
+
 const Contact = () => {
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  const [query, setQuery] = useState({
+    email: "",
+    subject: "",
+    message: "",
+  })
+ 
+  const TextTacker = (e) => {
+    const Name = e.target.name
+
+    const Value = e.target.value
+    setQuery({...query, [Name] : Value })
+  }
+  
+  const notify = () => toast("Congrats! Your message send.");
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    const Feedback = { ...query }
+    setLoading(true)
+    axios.post('http://localhost:4000/feedback', Feedback)
+      .then(res => {
+    if (res.data.acknowledged) {
+      console.log(res.data)
+      setError("")
+      setLoading(false)
+      notify()
+        }
+       
+      })
+    .catch (error => {
+      if (error) {
+        setError("Someting is wrong.Please try again!")
+      
+      }
+    
+    })
+      .finally( 
+        setQuery({ email: "",
+         subject: "",
+          message: "",
+        }),
+
+          
+       
+    )
+    
+  }
+
   const theme = useTheme();
   const costomStyle = makeStyles({
     input: {
       [theme.breakpoints.up("md")]: {
-        width: "60%",
+        width: "100%",
       },
       [theme.breakpoints.down("md")]: {
         width: "100%",
       },
     },
+
+   container: { 
+
+     [theme.breakpoints.up("md")]: {
+        width : "100%", height: "100vh"
+      }, 
+    },
+
+    div: {
+      [theme.breakpoints.up("md")]: {
+           display : "flex", flexDirection: "column", width : "100%", justifyContent : "center", height: "100vh", alignItems: "center" 
+       }
+    },
+    divSpace: {
+      [theme.breakpoints.up("md")]: {
+           paddingY: "30px"
+       }
+    }
+
   });
 
-  const { input } = costomStyle({});
+  const { div, container } = costomStyle({});
+
+ 
 
   return (
-    <Box sx={{ mb: 5 }} id="Contact">
-      <Box>
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: "bold",
-            textAlign: "center",
-            color: "#15D1C1",
-            padding: "3px 0",
-            marginTop: "30px",
-          }}
+    <Box id="Contact" className={container} sx={{
+      textAlign: "center", paddingY: "20px"}} >
+      <Container className={div} >
+       
+       
+        <Box>
+        <h4
+          className="blue biseHeader"
         >
           CONTACT US
-        </Typography>
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: "midum",
-            textAlign: "center",
-            color: "white",
-            padding: "14px 0",
-            marginBottom: "30px",
-          }}
-        >
+        </h4>
+        <h3
+          className="white divspace"
+          >
+          
           Always Connect with us
-        </Typography>
-        <Box className={input} sx={{ margin: "auto", textAlign: "center" }}>
-          <Stack spacing={3}>
-            <TextField
+          </h3>
+
+         
+      
+          
+        
+      
+         
+          <Box>
+             <ToastContainer/>
+            <form >
+              <TextField 
+                required
+                name="email"
+                onChange={TextTacker}
+                value={query?.email}
               fullWidth
-              placeholder="Email Address"
-              sx={{ backgroundColor: "white", borderRadius: "10px" }}
-              id="fullWidth"
+              placeholder="Email"
+              sx={{ backgroundColor: "white", borderRadius: "10px", marginBottom: "15px"  }}
+           
             />
-            <TextField
+              <TextField
+                required
+                name="subject"
+                 onChange={TextTacker}
+                value={query.subject}
               fullWidth
               placeholder="Subject"
               sx={{
                 backgroundColor: "white",
                 borderRadius: "10px",
                 fontWeight: "bold",
+                marginBottom : "15px"
               }}
-              id="fullWidth"
+             
             />
-            <TextField
+              <TextField
+                required
+                name="message"
+                onChange={TextTacker}
+                value={query.message}
               fullWidth
-              id="filled-textarea"
               sx={{
                 backgroundColor: "white",
                 borderRadius: "10px",
                 outlineColor: "blue",
                 borderColor: "blue",
+                marginBottom: "15px"
               }}
               placeholder="Your Message"
               rows={4}
               multiline
             />
-            <Box>
-              <Button
-                sx={{
-                  background: "#00D1E3",
-                  color: "#fff",
-                  padding: "7px 25px",
-                }}
-              >
-                Submit
-              </Button>
-            </Box>
-          </Stack>
+              <Box >
+                
+                {!loading ?     
+              
+                   <button className="btn"
+                  type="submit"
+                  onClick={submitForm }>
+                  Submit
+                </button>
+                  : 
+                <CircularProgress/>
+                }
+                
+            
+         
+            </Box>      
+
+          </form>
+           <p>{error} </p>
+            
+          </Box>
+            
+            
+            
         </Box>
-      </Box>
+         
+        
+      
+        
+
+        
+      </Container>
     </Box>
   );
 };

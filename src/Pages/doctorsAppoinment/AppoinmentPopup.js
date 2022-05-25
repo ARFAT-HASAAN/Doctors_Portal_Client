@@ -9,13 +9,16 @@ import {
 } from "@mui/material";
 import UseAuth from "../context/AuthContext";
 import axios from "axios";
+  // import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const AppoinmentPopup = ({
   handleClose,
   appoinment,
   date,
   open,
-  setIspassData,
+  
+ toastfunc
 }) => {
   const { user } = UseAuth();
 
@@ -41,13 +44,16 @@ const AppoinmentPopup = ({
     const newPatient = {
       ...patientData,
       serviceName: appoinment.title,
+      price: appoinment.price,
       date: date?.toLocaleDateString(),
     };
 
+  
     axios.post("https://still-chamber-41424.herokuapp.com/appoientment", newPatient).then((res) => {
       if (res.data.acknowledged) {
-        setIspassData(true);
         handleClose();
+        toastfunc()
+      
       }
     });
   };

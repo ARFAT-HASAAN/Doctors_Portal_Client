@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
 import loginPic from "../../assets/images/login.png";
 
 import { makeStyles } from "@mui/styles";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../context/AuthContext";
 
 const Regester = () => {
@@ -67,7 +67,8 @@ const Regester = () => {
 
   return (
     <Box style={{ marginTop: "70px" }}>
-      <Grid sx={{ alignItems: "center" }} container gap={4} columns={13}>
+      <Container> 
+        <Grid sx={{ alignItems: "center" }} container gap={7} columns={13}>
         <Grid item xs={13} sm={13} md={6} lg={6}>
           <Card sx={{ width: "600px", margin: "auto", padding: "100px" }}>
             <Typography
@@ -113,7 +114,9 @@ const Regester = () => {
               >
                 Regester
               </Button>
-            </form>
+              </form>
+               <h5 className="spaceing" >Already have an account? Please  <Link to={"/Login"}> Login </Link> </h5>
+              
           </Card>
         </Grid>
 
@@ -126,6 +129,8 @@ const Regester = () => {
           />
         </Grid>
       </Grid>
+      </Container>
+      
     </Box>
   );
 };

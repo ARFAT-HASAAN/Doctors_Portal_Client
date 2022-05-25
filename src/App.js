@@ -13,16 +13,20 @@ import AddDoctors from "./Pages/Dashbord/AddDoctors/AddDoctors";
 import MakeAdmin from "./Pages/Dashbord/makeAdmin/MakeAdmin";
 import AllPatient from "./Pages/Dashbord/AllPatient/AllPatient";
 import AdminRoute from "./Pages/route/AdminRoute";
+import Payment from "./Pages/Dashbord/PaymantRoute/Payment";
+import Notfound from "./Pages/result/Notfound";
+import Thankfull from "./Pages/result/Thankfull";
+
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <Navbar></Navbar>
+      <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
-            path="/appoinment"
+            path="appoinment"
             element={
               <PrivateRoute>
                 {" "}
@@ -40,8 +44,9 @@ function App() {
               </PrivateRoute>
             }
           >
-            <Route path="/dashbord" element={<Appoentments />} />
+            <Route path="/dashbord" element={<Appoentments />} /> 
             <Route path="AddDoctors" element={<AddDoctors />} />
+            <Route path="/dashbord/pay/:id" element={<Payment />} />
             <Route
               path="makeAdmin"
               element={
@@ -55,6 +60,9 @@ function App() {
           </Route>
           <Route path="Login" element={<Login />} />
           <Route path="Regester" element={<Regester />} />
+          <Route path="thankfull" element={<Thankfull/>} />
+
+          <Route path="*" element={<Notfound/>} />
         </Routes>
         <Footer></Footer>
       </AuthProvider>

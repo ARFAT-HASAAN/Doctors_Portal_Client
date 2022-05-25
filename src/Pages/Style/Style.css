@@ -1,11 +1,9 @@
 #banner {
   background-image: url("../assets//images/bg.png");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: inherit;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+}
+
+#costomDiv {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 60%, #3A4257 40%);
 }
 
 .spaceTop {
@@ -29,15 +27,14 @@
   background-repeat: no-repeat;
   background-position: inherit;
   background-attachment: fixed;
-  padding: 50px;
 }
-.footer {
+
+#footer {
   background-image: url("../assets/images/footer-bg.png");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: initial;
-  padding: 40px;
 }
 
 ul {

@@ -1,0 +1,7 @@
+#appoinmentBanner {
+    background-image: url("../assets//images/bg.png");
+}
+
+#costomDiv {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 60%, #3A4257 40%);
+}

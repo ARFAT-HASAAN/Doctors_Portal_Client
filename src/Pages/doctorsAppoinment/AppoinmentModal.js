@@ -1,9 +1,9 @@
-import { Button, Grid, Paper, Typography } from "@mui/material";
 import * as React from "react";
+import { Grid, Paper, Stack, } from "@mui/material";
 
 import AppoinmentPopup from "./AppoinmentPopup";
 
-const AppoinmentModal = ({ appoinment, date, setIspassData }) => {
+const AppoinmentModal = ({ appoinment, date, toast }) => {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -14,44 +14,46 @@ const AppoinmentModal = ({ appoinment, date, setIspassData }) => {
 
   return (
     <Grid item xs={13} sm={13} md={6} lg={4}>
-      <Paper sx={{ padding: "20px", textAlign: "center" }} elevation={3}>
-        <Typography
-          sx={{ fontSize: "1.6rem", fontWeight: "bold", color: "#15D1C1" }}
+      <Paper sx={{  }} elevation={3}>
+        
+        <Stack sx={{textAlign: "center", margin: "auto"}} spacing={2}>
+           <h4
         >
           {" "}
           {appoinment.title}{" "}
-        </Typography>
+        </h4>
 
-        <Typography
-          sx={{ fontWeight: "bold", marginTop: "12px", fontSize: "1.2rem" }}
+        <h4
+          
+        >
+          Price:$ {appoinment.price}
+        </h4>
+        <h4
+          
         >
           {appoinment.watchTime}
-        </Typography>
-        <Typography
-          sx={{ color: "slategrey", fontSize: "0.8rem", marginTop: "16px" }}
+        </h4>
+        <h6
+          
         >
           {appoinment.space} SPACE AVAIABLE
-        </Typography>
+        </h6>
 
-        <Button
-          sx={{
-            backgroundColor: "#15D1C1",
-            color: "white",
-            padding: "7px 12px",
-            fontWeight: "bold",
-            marginTop: "22px",
-          }}
+        <button className="btnn"
+          
           onClick={handleClickOpen}
         >
           Book Appoinment
-        </Button>
+        </button>
+        </Stack>
+       
       </Paper>
 
       <AppoinmentPopup
         appoinment={appoinment}
         date={date}
+        toastfunc={toast}
         open={open}
-        setIspassData={setIspassData}
         handleClose={handleClose}
       ></AppoinmentPopup>
     </Grid>
