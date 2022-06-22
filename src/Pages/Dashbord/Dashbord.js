@@ -1,94 +1,86 @@
-import * as React from "react";
+import * as React from 'react'
+import logo from '../assets/images/logo.png'
+import {
+  AppBar,
+  Box,
+  CssBaseline,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+} from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
+import { Link, Outlet } from 'react-router-dom'
+import { makeStyles } from '@mui/styles'
+import UseAuth from '../context/AuthContext'
 
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { Link, Outlet } from "react-router-dom";
-import { Button } from "@mui/material";
-import Appoentments from "./Appoentments/Appoentments";
-import UseAuth from "../context/AuthContext";
-import { makeStyles } from "@mui/styles";
-
-import logo from "../assets/images/logo.png"
-
-const drawerWidth = 240;
-
+const drawerWidth = 240
 function ResponsiveDrawer(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { window } = props
+  const [mobileOpen, setMobileOpen] = React.useState(false)
 
+  // drewer toogle
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    setMobileOpen(!mobileOpen)
+  }
 
-  // make style
-
+  // mui costom classses
   const coustomStyle = makeStyles({
     route: {
-      color: "white",
-      fontWeight: "bold",
-      textDecoration: "none",
-      fontSize: "1.2rem",
-      textAlign: "left",
+      color: 'white',
+      fontWeight: 'bold',
+      textDecoration: 'none',
+      fontSize: '1.2rem',
+      textAlign: 'left',
     },
     homeRoute: {
-      color: "white",
-      fontWeight: "bold",
-      textDecoration: "none",
-      textAlign: "center",
-      fontSize: "1.2rem",
-      margin: "auto",
-      padding: "20px",
+      color: 'white',
+      fontWeight: 'bold',
+      textDecoration: 'none',
+      textAlign: 'center',
+      fontSize: '1.2rem',
+      margin: 'auto',
+      padding: '20px',
     },
-  });
+  })
 
-  const { route, homeRoute } = coustomStyle();
+  // distruced classes name
+  const { route, homeRoute } = coustomStyle()
 
-  const { isAdmin } = UseAuth();
+  // distruced admin
+  const { isAdmin } = UseAuth()
 
   const drawer = (
     <Box>
-   
-        {" "}
-        <Link className={homeRoute} to={"/"}>
-          <img style={{width : "70px", paddingTop: "15px"}} src={logo} alt="logo images" />
-        </Link>
-    
-
+      {' '}
+      <Link className={homeRoute} to={'/'}>
+        <img
+          style={{ width: '70px', paddingTop: '15px' }}
+          src={logo}
+          alt="logo images"
+        />
+      </Link>
       <List>
-
-
-        <ListItem >
-          
+        <ListItem>
           <ListItemText>
-            {" "}
-            <Link className={route} to={"/dashbord"}>
-              {" "}
-              Appoentment{" "}
+            {' '}
+            <Link className={route} to={'/dashbord'}>
+              {' '}
+              Appoentment{' '}
             </Link>
           </ListItemText>
         </ListItem>
 
         <ListItem button>
-         
           <ListItemText>
-            {" "}
-            <Link className={route} to={"Allpatient"}>
-              {" "}
+            {' '}
+            <Link className={route} to={'Allpatient'}>
+              {' '}
               Prescription
-            </Link>{" "}
+            </Link>{' '}
           </ListItemText>
         </ListItem>
         {isAdmin && (
@@ -96,38 +88,38 @@ function ResponsiveDrawer(props) {
             <ListItem button>
               <ListItemIcon></ListItemIcon>
               <ListItemText>
-                {" "}
-                <Link className={route} to={"AddDoctors"}>
-                  {" "}
-                  Add Doctors{" "}
-                </Link>{" "}
+                {' '}
+                <Link className={route} to={'AddDoctors'}>
+                  {' '}
+                  Add Doctors{' '}
+                </Link>{' '}
               </ListItemText>
             </ListItem>
             <ListItem button>
               <ListItemIcon></ListItemIcon>
               <ListItemText>
-                {" "}
-                <Link className={route} to={"makeAdmin"}>
-                  {" "}
+                {' '}
+                <Link className={route} to={'makeAdmin'}>
+                  {' '}
                   Make admin
-                </Link>{" "}
+                </Link>{' '}
               </ListItemText>
             </ListItem>
           </Box>
         )}
       </List>
     </Box>
-  );
+  )
 
   const container =
-    window !== undefined ? () => window().document.body : undefined;
+    window !== undefined ? () => window().document.body : undefined
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
-          background: "black",
+          background: 'black',
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
@@ -138,13 +130,11 @@ function ResponsiveDrawer(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-          <h4 >
-            Dashbord
-          </h4>
+          <h4>Dashbord</h4>
         </Toolbar>
       </AppBar>
       <Box
@@ -162,12 +152,12 @@ function ResponsiveDrawer(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none", textAlign: "left" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
+            display: { xs: 'block', sm: 'none', textAlign: 'left' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
               width: drawerWidth,
-              background: "black",
-              color: "black",
+              background: 'black',
+              color: 'black',
             },
           }}
         >
@@ -176,13 +166,13 @@ function ResponsiveDrawer(props) {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block", textAlign : 'left'},
+            display: { xs: 'none', sm: 'block', textAlign: 'left' },
 
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
               width: drawerWidth,
-              background: "black",
-              color: "white",
+              background: 'black',
+              color: 'white',
             },
           }}
           open
@@ -202,7 +192,7 @@ function ResponsiveDrawer(props) {
         <Outlet />
       </Box>
     </Box>
-  );
+  )
 }
 
-export default ResponsiveDrawer;
+export default ResponsiveDrawer

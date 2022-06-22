@@ -1,12 +1,12 @@
-import React from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import UseAuth from "../context/AuthContext";
+import React from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
+import UseAuth from '../context/AuthContext'
 
 const AdminRoute = ({ children }) => {
-  const { user, isloading, isAdmin } = UseAuth();
-  let location = useLocation();
+  const { user, isloading, isAdmin } = UseAuth()
+  let location = useLocation()
   if (isloading) {
-    return <p> Loading.. </p>;
+    return <p> Loading.. </p>
   }
   return (
     <>
@@ -16,7 +16,7 @@ const AdminRoute = ({ children }) => {
         <Navigate to="/" state={{ from: location }}></Navigate>
       )}
     </>
-  );
-};
+  )
+}
 
-export default AdminRoute;
+export default AdminRoute

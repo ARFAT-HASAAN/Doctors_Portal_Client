@@ -1,10 +1,11 @@
-import { Container, Grid, Stack, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import React from "react";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import AddIcCallIcon from "@material-ui/icons/AddIcCall";
-import "../../Style/Style.css";
+import React from 'react'
+import { Container, Grid, Stack } from '@mui/material'
+import { Box } from '@mui/system'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import AddIcCallIcon from '@material-ui/icons/AddIcCall'
+import '../../Style/Style.css'
+
 const Details = () => {
   return (
     <Box sx={{ mt: -6 }}>
@@ -12,9 +13,9 @@ const Details = () => {
         <Grid container columns={13} gap={2}>
           <Grid
             sx={{
-              backgroundColor: "#15D1C1",
-              borderRadius: "5px",
-              padding: "20px",
+              backgroundColor: '#15D1C1',
+              borderRadius: '5px',
+              padding: '20px',
             }}
             item
             xs={13}
@@ -25,20 +26,18 @@ const Details = () => {
             <Box
               gap={4}
               sx={{
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
               <LocationOnIcon
                 fontSize="large"
-                style={{ color: "white", fontSize: "5rem" }}
+                style={{ color: 'white', fontSize: '5rem' }}
               />
 
               <Stack spacing={1}>
-                <h4  className="white" >
-                  Opening Hours
-                </h4>
-                <p className="white" >
+                <h4 className="white">Opening Hours</h4>
+                <p className="white">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
               </Stack>
@@ -46,9 +45,9 @@ const Details = () => {
           </Grid>
           <Grid
             sx={{
-              borderRadius: "5px",
-              padding: "20px",
-              backgroundColor: "#3A4257",
+              borderRadius: '5px',
+              padding: '20px',
+              backgroundColor: '#3A4257',
             }}
             item
             xs={13}
@@ -59,19 +58,17 @@ const Details = () => {
             <Box
               gap={4}
               sx={{
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
               <AccessTimeIcon
                 fontSize="large"
-                style={{ color: "white", fontSize: "5rem" }}
+                style={{ color: 'white', fontSize: '5rem' }}
               />
               <Stack spacing={1}>
-                <h4 className="white" >
-                  Opening Hours
-                </h4>
-                <p className="white" >
+                <h4 className="white">Opening Hours</h4>
+                <p className="white">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
               </Stack>
@@ -79,9 +76,9 @@ const Details = () => {
           </Grid>
           <Grid
             sx={{
-              backgroundColor: "#15D1C1",
-              borderRadius: "5px",
-              padding: "20px",
+              backgroundColor: '#15D1C1',
+              borderRadius: '5px',
+              padding: '20px',
             }}
             item
             xs={13}
@@ -92,20 +89,17 @@ const Details = () => {
             <Box
               gap={4}
               sx={{
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
               <AddIcCallIcon
                 fontSize="large"
-                style={{ color: "white", fontSize: "5rem" }}
+                style={{ color: 'white', fontSize: '5rem' }}
               />
               <Stack spacing={1}>
-                <h4 className="white"
-                >
-                  Opening Hours
-                </h4>
-                <p  className="white" >
+                <h4 className="white">Opening Hours</h4>
+                <p className="white">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
               </Stack>
@@ -114,7 +108,7 @@ const Details = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Details;
+export default Details

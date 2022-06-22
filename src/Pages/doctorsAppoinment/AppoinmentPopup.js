@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
+import UseAuth from '../context/AuthContext'
+import axios from 'axios'
+import 'react-toastify/dist/ReactToastify.css'
 import {
   Button,
   Dialog,
@@ -6,57 +9,57 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-} from "@mui/material";
-import UseAuth from "../context/AuthContext";
-import axios from "axios";
-  // import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+} from '@mui/material'
 
 const AppoinmentPopup = ({
   handleClose,
   appoinment,
   date,
   open,
-  
- toastfunc
+  toastfunc,
 }) => {
-  const { user } = UseAuth();
+  const { user } = UseAuth()
 
+  // default user data
   const patientInfo = {
     displayName: user?.displayName,
     email: user.email,
-    phone: "",
-  };
-  const [patientData, setPatientData] = useState(patientInfo);
+    phone: '',
+  }
+  const [patientData, setPatientData] = useState(patientInfo)
 
+  // user data observer function
   const fieldData = (e) => {
-    const field = e.target.name;
-    const value = e.target.value;
-    const newInfo = { ...patientData };
-    newInfo[field] = value;
-    setPatientData(newInfo);
-  };
+    const field = e.target.name
+    const value = e.target.value
+    const newInfo = { ...patientData }
+    newInfo[field] = value
+    setPatientData(newInfo)
+  }
 
-  //   data function
+  //  appoinment request function
   const SubmitData = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const newPatient = {
       ...patientData,
       serviceName: appoinment.title,
       price: appoinment.price,
       date: date?.toLocaleDateString(),
-    };
+    }
 
-  
-    axios.post("https://still-chamber-41424.herokuapp.com/appoientment", newPatient).then((res) => {
-      if (res.data.acknowledged) {
-        handleClose();
-        toastfunc()
-      
-      }
-    });
-  };
+    axios
+      .post(
+        'https://still-chamber-41424.herokuapp.com/appoientment',
+        newPatient,
+      )
+      .then((res) => {
+        if (res.data.acknowledged) {
+          handleClose()
+          toastfunc()
+        }
+      })
+  }
 
   return (
     <div>
@@ -69,7 +72,7 @@ const AppoinmentPopup = ({
             id="outlined-textarea"
             defaultValue={appoinment.watchTime}
             sx={{
-              marginTop: "10px ",
+              marginTop: '10px ',
             }}
           />
           <TextField
@@ -79,9 +82,9 @@ const AppoinmentPopup = ({
             placeholder="Your Name"
             defaultValue={user.displayName}
             sx={{
-              backgroundColor: "white",
-              borderRadius: "10px",
-              marginTop: "10px ",
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              marginTop: '10px ',
             }}
             id="fullWidth"
           />
@@ -93,9 +96,9 @@ const AppoinmentPopup = ({
             name="email"
             defaultValue={user.email}
             sx={{
-              backgroundColor: "white",
-              borderRadius: "10px",
-              marginTop: "10px",
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              marginTop: '10px',
             }}
             id="fullWidth"
           />
@@ -106,22 +109,22 @@ const AppoinmentPopup = ({
             name="phone"
             placeholder="Phone Number"
             sx={{
-              backgroundColor: "white",
-              borderRadius: "10px",
-              marginTop: "10px",
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              marginTop: '10px',
             }}
             id="fullWidth"
           />
           <TextField
             disabled
             fullWidth
-            type={"text"}
+            type={'text'}
             defaultValue={date.toDateString()}
             placeholder="date"
             sx={{
-              backgroundColor: "white",
-              borderRadius: "10px",
-              marginTop: "10px",
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              marginTop: '10px',
             }}
             id="fullWidth"
           />
@@ -129,10 +132,10 @@ const AppoinmentPopup = ({
         <DialogActions>
           <Button
             sx={{
-              backgroundColor: "red",
-              color: "white",
-              padding: "7px 22px",
-              fontWeight: "bold",
+              backgroundColor: 'red',
+              color: 'white',
+              padding: '7px 22px',
+              fontWeight: 'bold',
             }}
             onClick={handleClose}
           >
@@ -140,10 +143,10 @@ const AppoinmentPopup = ({
           </Button>
           <Button
             sx={{
-              backgroundColor: "#15D1C1",
-              color: "white",
-              padding: "7px 22px",
-              fontWeight: "bold",
+              backgroundColor: '#15D1C1',
+              color: 'white',
+              padding: '7px 22px',
+              fontWeight: 'bold',
             }}
             onClick={SubmitData}
           >
@@ -152,7 +155,7 @@ const AppoinmentPopup = ({
         </DialogActions>
       </Dialog>
     </div>
-  );
-};
+  )
+}
 
-export default AppoinmentPopup;
+export default AppoinmentPopup

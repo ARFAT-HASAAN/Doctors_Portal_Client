@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,108 +7,112 @@ import {
   updateProfile,
   getIdToken,
   onAuthStateChanged,
-} from "firebase/auth";
+} from 'firebase/auth'
 
-import { useEffect, useState } from "react";
-import InitializedApp from "../Firebase/InitializedApp";
+import { useEffect, useState } from 'react'
+import InitializedApp from '../Firebase/InitializedApp'
 
-InitializedApp();
+// firebase init func call
+InitializedApp()
+
 const Usefirebase = () => {
-  const auth = getAuth();
-  const [user, setUser] = useState({});
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isloading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [token, setToken] = useState("");
+  const auth = getAuth()
+  const [user, setUser] = useState({})
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [isloading, setIsLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [token, setToken] = useState('')
 
   //   newUser
   const newUser = (email, password) => {
-    setIsLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+    setIsLoading(true)
+    return createUserWithEmailAndPassword(auth, email, password)
+  }
 
   //   oldUser
   const oldUser = (email, password) => {
-    setIsLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+    setIsLoading(true)
+    return signInWithEmailAndPassword(auth, email, password)
+  }
 
   //   logout
   const logOut = () => {
-    setIsLoading(true);
+    setIsLoading(true)
     signOut(auth)
       .then(() => {
-        setUser({});
+        setUser({})
       })
       .catch((error) => {
-        setError(error.message);
+        setError(error.message)
       })
-      .finally(setIsLoading(false));
-  };
+      .finally(setIsLoading(false))
+  }
 
   //   setProfile
   const userProfile = (name) => {
-    setIsLoading(true);
+    setIsLoading(true)
     updateProfile(auth.currentUser, {
       displayName: name,
     })
       .then(() => {
-        setUser(auth.currentUser);
-        SaveUser(auth.currentUser?.displayName, auth.currentUser?.email);
+        setUser(auth.currentUser)
+        SaveUser(auth.currentUser?.displayName, auth.currentUser?.email)
       })
       .catch((error) => {
-        setError(error.message);
+        setError(error.message)
       })
-      .finally(setIsLoading(false));
-  };
+      .finally(setIsLoading(false))
+  }
 
   //   observer
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true)
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        setUser(user)
         getIdToken(user).then((getIdToken) => {
           // console.log(getIdToken);
-          setToken(getIdToken);
-        });
+          setToken(getIdToken)
+        })
         // ...
       } else {
-        setUser({});
+        setUser({})
       }
-      setIsLoading(false);
-    });
-  }, [auth]);
+      setIsLoading(false)
+    })
+  }, [auth])
 
   useEffect(() => {
-    axios.get(`https://still-chamber-41424.herokuapp.com/users/${user?.email}`).then((res) => {
-      if (!res.data.role) {
-        setIsAdmin(false);
-      } else if (res.data.role) {
-        setIsAdmin(true);
-      }
-    });
-  }, [user.email, isAdmin]);
+    axios
+      .get(`https://still-chamber-41424.herokuapp.com/users/${user?.email}`)
+      .then((res) => {
+        if (!res.data.role) {
+          setIsAdmin(false)
+        } else if (res.data.role) {
+          setIsAdmin(true)
+        }
+      })
+  }, [user.email, isAdmin])
 
   const SaveUser = (name, email) => {
-    const user = { name, email };
+    const user = { name, email }
     axios
-      .post("https://still-chamber-41424.herokuapp.com/users", user)
+      .post('https://still-chamber-41424.herokuapp.com/users', user)
       .then((res) => {})
       .catch((err) => {
-        setError(err.meassage);
-      });
-  };
+        setError(err.meassage)
+      })
+  }
 
   // save old user
   const SaveOldUser = (name, email) => {
-    const user = { name, email };
+    const user = { name, email }
 
     axios
-      .put("https://still-chamber-41424.herokuapp.com/users", user)
+      .put('https://still-chamber-41424.herokuapp.com/users', user)
       .then((res) => res)
-      .catch((err) => setError(err.meassage));
-  };
+      .catch((err) => setError(err.meassage))
+  }
 
   return {
     newUser,
@@ -126,7 +130,7 @@ const Usefirebase = () => {
     isAdmin,
     setIsAdmin,
     token,
-  };
-};
+  }
+}
 
-export default Usefirebase;
+export default Usefirebase
