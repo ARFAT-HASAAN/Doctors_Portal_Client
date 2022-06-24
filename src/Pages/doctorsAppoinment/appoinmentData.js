@@ -1,4 +1,4 @@
-export const appointments = [
+const appointments = [
   {
     key: 1,
     title: 'Theet Orthodontics',
@@ -47,3 +47,5 @@ export const appointments = [
     watchTime: '8:00 am - 9:00 pm',
   },
 ]
+
+export default appointments

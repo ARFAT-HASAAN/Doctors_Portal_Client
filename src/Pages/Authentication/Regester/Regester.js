@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Card,
+  CircularProgress,
   Container,
   Grid,
   Typography,
@@ -33,6 +34,8 @@ const Regester = () => {
     error,
     setError,
     userProfile,
+    islogin,
+    setislogin,
   } = UseAuth()
 
   // mui costom style and breakpoing methods
@@ -63,6 +66,7 @@ const Regester = () => {
   // regester function
   const submitForm = (e) => {
     e.preventDefault()
+    setislogin(true)
     const name = nameRef.current.value
     const email = EmailRef.current.value
     const pass = PasswordRef.current.value
@@ -76,6 +80,7 @@ const Regester = () => {
       .catch((error) => {
         const errorMessage = error.message
         setError(errorMessage)
+        setislogin(false)
       })
       .finally(setIsLoading(false))
 
@@ -141,7 +146,7 @@ const Regester = () => {
                     width: '100%',
                   }}
                 >
-                  Regester
+                  {islogin ? <CircularProgress /> : 'Regester'}
                 </Button>
               </form>
               <h5 className="spaceing">

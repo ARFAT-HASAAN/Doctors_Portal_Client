@@ -37,7 +37,17 @@ const Appoinment = () => {
     <Box className={[container, space]} id="appoinment">
       <Container className={div}>
         <Grid container columns={12}>
-          <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Grid
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine"
+            item
+            xs={12}
+            sm={12}
+            md={6}
+            lg={6}
+          >
             <Box>
               <img
                 style={{
@@ -50,7 +60,17 @@ const Appoinment = () => {
               />
             </Box>
           </Grid>
-          <Grid item xs={13} sm={12} md={6} lg={6}>
+          <Grid
+            data-aos="fade-left"
+            data-aos-offset="300"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine"
+            item
+            xs={13}
+            sm={12}
+            md={6}
+            lg={6}
+          >
             <Box sx={{ padding: '0px' }}>
               <Stack spacing={3}>
                 <h4 className="blue">APPOINMENT</h4>

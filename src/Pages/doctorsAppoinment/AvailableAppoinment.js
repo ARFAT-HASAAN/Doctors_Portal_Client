@@ -43,18 +43,6 @@ const AvailableAppoinment = ({ date }) => {
     <Box className={container}>
       <Container className={div}>
         <Box className={div}>
-          <ToastContainer
-            position="center"
-            autoClose={1000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-
           <h3 className="spaceing">
             Available Appoinment on {date.toDateString()}
           </h3>
@@ -63,6 +51,7 @@ const AvailableAppoinment = ({ date }) => {
             Book your appoinment from here
           </h3>
 
+          <ToastContainer />
           <Grid container columns={13} gap={5}>
             {appointments.map((appoinment) => (
               <AppoinmentModal

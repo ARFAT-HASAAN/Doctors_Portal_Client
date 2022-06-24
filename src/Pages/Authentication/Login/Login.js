@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Card,
+  CircularProgress,
   Container,
   Grid,
   Typography,
@@ -59,6 +60,8 @@ const Login = () => {
     SaveOldUser,
     oldUser,
     setIsLoading,
+    islogin,
+    setislogin,
   } = UseAuth()
 
   //  login function
@@ -66,6 +69,7 @@ const Login = () => {
     e.preventDefault()
     const email = EmailRef.current.value
     const pass = PasswordRef.current.value
+    setislogin(true)
     oldUser(email, pass)
       .then((userCredential) => {
         const user = userCredential.user
@@ -77,6 +81,7 @@ const Login = () => {
       .catch((error) => {
         const errorMessage = error.message
         setError(errorMessage)
+        setislogin(false)
       })
       .finally(setIsLoading(false))
   }
@@ -131,7 +136,7 @@ const Login = () => {
                     width: '100%',
                   }}
                 >
-                  Login
+                  {islogin ? <CircularProgress /> : 'Login'}
                 </Button>
               </form>
 

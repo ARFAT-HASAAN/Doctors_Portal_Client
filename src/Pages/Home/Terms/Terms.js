@@ -29,7 +29,13 @@ const Terms = () => {
 
   return (
     <Box className={container} id="verticleHeight">
-      <Container className={div} id="aboute">
+      <Container
+        data-aos="zoom-in-up"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in-sine"
+        className={div}
+        id="aboute"
+      >
         <Box>
           <Grid sx={{ alignItems: 'center' }} gap={6} container columns={13}>
             <Grid item xs={13} sm={13} md={6} lg={6}>

@@ -8,7 +8,7 @@ import '../../Style/Style.css'
 
 const Details = () => {
   return (
-    <Box sx={{ mt: -6 }}>
+    <Box data-aos="fade-up" data-aos-duration="1000" sx={{ mt: -6 }}>
       <Container>
         <Grid container columns={13} gap={2}>
           <Grid

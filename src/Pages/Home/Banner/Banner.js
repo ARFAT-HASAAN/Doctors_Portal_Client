@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Container, Grid, Stack } from '@mui/material'
 import '../../Style/Style.css'
 import Chair from '../../assets/images/chair.png'
+import { HashLink } from 'react-router-hash-link'
 
 const Banner = () => {
   return (
@@ -31,7 +32,17 @@ const Banner = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Rerum perspiciatis aut labore quisquam est sapiente dicta.
                   </p>
-                  <button className="btn">Get Appoinment</button>
+                  <HashLink
+                    to={'appoinment/#appoinmentGird'}
+                    scroll={(el) =>
+                      el.scrollIntoView({
+                        behavior: 'smooth',
+                        // block: 'end',
+                      })
+                    }
+                  >
+                    <button className="btn">Get Appoinment </button>
+                  </HashLink>{' '}
                 </Stack>
               </Grid>
               <Grid item xs={13} sm={13} md={5} lg={6}>

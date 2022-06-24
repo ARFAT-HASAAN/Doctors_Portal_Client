@@ -12,6 +12,8 @@ import {
 
 import { makeStyles } from '@mui/styles'
 import doctor from '../../assets/images/doctor-small.png'
+import doctor1 from '../../assets/images/newDoctor1.png'
+import doctor2 from '../../assets/images/newdoctor2.png'
 
 const Doctors = () => {
   // mui costome style made
@@ -37,50 +39,56 @@ const Doctors = () => {
   const { div, container } = costomDiv({})
 
   return (
-    <Box className={container} id="verticleHeight">
-      <Container className={div} id="Doctors">
-        <Box>
-          <h4 className="blue semibiseHeader">OUR DOCTORS</h4>
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-sine"
+    >
+      <Box className={container} id="verticleHeight">
+        <Container className={div} id="Doctors">
+          <Box>
+            <h4 className="blue semibiseHeader">OUR DOCTORS</h4>
 
-          <h3 className="divspace">Have a look your favorites doctors</h3>
-          <Grid container spacing={2} columns={12}>
-            <Grid item xs={12} sm={12} md={3} lg={4}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia component="img" image={doctor} alt="doctor" />
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <h4 className="blue">Dr.chaudy</h4>
-                    <h6 className="gray">+8801234394939</h6>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+            <h3 className="divspace">Have a look your favorites doctors</h3>
+            <Grid container spacing={2} columns={12}>
+              <Grid item xs={12} sm={12} md={3} lg={4}>
+                <Card>
+                  <CardActionArea>
+                    <CardMedia component="img" image={doctor2} alt="doctor" />
+                    <CardContent sx={{ textAlign: 'center' }}>
+                      <h4 className="blue">Dr.chaudy</h4>
+                      <h6 className="gray">+8801234394939</h6>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+              <Grid item xs={12} sm={12} md={4} lg={4}>
+                <Card>
+                  <CardActionArea>
+                    <CardMedia component="img" image={doctor} alt="doctor" />
+                    <CardContent sx={{ textAlign: 'center' }}>
+                      <h4 className="blue">Dr.chaudy</h4>
+                      <h6 className="gray">+8801234394939</h6>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+              <Grid item xs={12} sm={12} md={4} lg={4}>
+                <Card>
+                  <CardActionArea>
+                    <CardMedia component="img" image={doctor1} alt="doctor" />
+                    <CardContent sx={{ textAlign: 'center' }}>
+                      <h4 className="blue">Dr.chaudy</h4>
+                      <h6 className="gray">+8801234394939</h6>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={4} lg={4}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia component="img" image={doctor} alt="doctor" />
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <h4 className="blue">Dr.chaudy</h4>
-                    <h6 className="gray">+8801234394939</h6>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4} lg={4}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia component="img" image={doctor} alt="doctor" />
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <h4 className="blue">Dr.chaudy</h4>
-                    <h6 className="gray">+8801234394939</h6>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </Box>
+          </Box>
+        </Container>
+      </Box>
+    </div>
   )
 }
 

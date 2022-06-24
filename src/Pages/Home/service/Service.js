@@ -34,67 +34,69 @@ const Service = () => {
   const { div, container } = costomDiv({})
 
   return (
-    <Box className={container} id="verticleHeight">
-      <Container className={div}>
-        <Box>
-          <h4 className="blue biseHeader ">OUR SERVICES</h4>
-          <h3 className="divspace textAlign">Service we provides</h3>
+    <div data-aos="zoom-in-up" data-aos-duration="3000">
+      <Box className={container} id="verticleHeight">
+        <Container className={div}>
+          <Box>
+            <h4 className="blue biseHeader ">OUR SERVICES</h4>
+            <h3 className="divspace textAlign">Service we provides</h3>
 
-          <Grid container gap={3} columns={13}>
-            <Grid item xs={13} sm={13} md={4} lg={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <CardMedia
-                  component="img"
-                  sx={{ width: '165px', margin: 'auto' }}
-                  width={'100px'}
-                  image={Fluride}
-                  alt="doctor"
-                ></CardMedia>
-                <h4 variant="h6" padding={2}>
-                  Fluoride Treatment
-                </h4>
-                <p className="gray">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, aperiam laboriosam dolorum aliquam ipsum ea?
-                </p>
-              </Box>
+            <Grid container gap={3} columns={13}>
+              <Grid item xs={13} sm={13} md={4} lg={4}>
+                <Box sx={{ textAlign: 'center' }}>
+                  <CardMedia
+                    component="img"
+                    sx={{ width: '165px', margin: 'auto' }}
+                    width={'100px'}
+                    image={Fluride}
+                    alt="doctor"
+                  ></CardMedia>
+                  <h4 variant="h6" padding={2}>
+                    Fluoride Treatment
+                  </h4>
+                  <p className="gray">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Animi, aperiam laboriosam dolorum aliquam ipsum ea?
+                  </p>
+                </Box>
+              </Grid>
+              <Grid item xs={13} sm={13} md={4} lg={4}>
+                <Box sx={{ textAlign: 'center' }}>
+                  <CardMedia
+                    component="img"
+                    sx={{ width: '150px', margin: 'auto' }}
+                    width={'100px'}
+                    image={Cavity}
+                    alt="doctor"
+                  ></CardMedia>
+                  <h4>Cavity Filling</h4>
+                  <p className="gray">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Animi, aperiam laboriosam dolorum aliquam ipsum ea?
+                  </p>{' '}
+                </Box>
+              </Grid>
+              <Grid item xs={13} sm={13} md={4} lg={4}>
+                <Box sx={{ textAlign: 'center' }}>
+                  <CardMedia
+                    component="img"
+                    sx={{ width: '150px', margin: 'auto' }}
+                    width={'100px'}
+                    image={Whitening}
+                    alt="doctor"
+                  ></CardMedia>
+                  <h4>Teeth Whitening</h4>
+                  <p className="gray">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Animi, aperiam laboriosam dolorum aliquam ipsum ea?
+                  </p>{' '}
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={13} sm={13} md={4} lg={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <CardMedia
-                  component="img"
-                  sx={{ width: '150px', margin: 'auto' }}
-                  width={'100px'}
-                  image={Cavity}
-                  alt="doctor"
-                ></CardMedia>
-                <h4>Cavity Filling</h4>
-                <p className="gray">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, aperiam laboriosam dolorum aliquam ipsum ea?
-                </p>{' '}
-              </Box>
-            </Grid>
-            <Grid item xs={13} sm={13} md={4} lg={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <CardMedia
-                  component="img"
-                  sx={{ width: '150px', margin: 'auto' }}
-                  width={'100px'}
-                  image={Whitening}
-                  alt="doctor"
-                ></CardMedia>
-                <h4>Teeth Whitening</h4>
-                <p className="gray">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Animi, aperiam laboriosam dolorum aliquam ipsum ea?
-                </p>{' '}
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </Box>
+          </Box>
+        </Container>
+      </Box>
+    </div>
   )
 }
 

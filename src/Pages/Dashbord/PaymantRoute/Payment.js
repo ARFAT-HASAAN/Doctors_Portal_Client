@@ -47,6 +47,7 @@ const Payment = () => {
     axios
       .get(`https://still-chamber-41424.herokuapp.com/appoientment/${id}`)
       .then((res) => {
+        // console.log(res.data)
         setAppoientment(res.data)
       })
   }, [id, setAppoientment])
@@ -66,8 +67,15 @@ const Payment = () => {
         >
           <Grid item xm={13} sm={13} md={6} lg={6} xlg={6}>
             <Paper sx={{ padding: '30px' }}>
-              <h2> Service name {appoinment.title}</h2>
-              <h5> Fee : ${appoinment.price} </h5>
+              <h3>
+                {' '}
+                <u> Appoinment Details</u>
+              </h3>
+              <h4> Service name : {appoinment?.serviceName}</h4>
+              <h4> Name : {appoinment?.displayName} </h4>
+              <h4>Email: {appoinment.email} </h4>
+              <h5> Fee : $ {appoinment?.price} </h5>
+              <h6>Date : {appoinment?.date}</h6>
             </Paper>
           </Grid>
 

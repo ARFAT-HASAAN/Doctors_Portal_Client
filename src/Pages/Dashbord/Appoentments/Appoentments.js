@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import UseAuth from '../../context/AuthContext'
 import Calender from '../../Shared/Date/Calender'
+import { HashLink } from 'react-router-hash-link'
+
 import {
   Grid,
   Box,
@@ -104,34 +106,59 @@ const Appoentments = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {datas.map((data) => (
-                    <StyledTableRow key={data._id}>
-                      <StyledTableCell component="th" scope="row">
-                        {data.displayName}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {data.date}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {data.serviceName}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {data?.payment?.amount ? (
-                          <button disabled className="btn">
-                            Paid
-                          </button>
-                        ) : (
-                          <Link to={`/dashbord/pay/${data._id}`}>
-                            {' '}
-                            <button className="btn">
+                  {datas.length === 0 ? (
+                    <div
+                      style={{
+                        padding: '10px',
+                        display: 'block',
+                      }}
+                    >
+                      <h4>You did not have any appoinment.</h4>
+                      <h6>
+                        Please Book an{' '}
+                        <HashLink
+                          to={'/appoinment/#appoinmentGird'}
+                          scroll={(el) =>
+                            el.scrollIntoView({
+                              behavior: 'smooth',
+                              // block: 'end',
+                            })
+                          }
+                        >
+                          Appoinment{' '}
+                        </HashLink>{' '}
+                      </h6>
+                    </div>
+                  ) : (
+                    datas.map((data) => (
+                      <StyledTableRow key={data._id}>
+                        <StyledTableCell component="th" scope="row">
+                          {data.displayName}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {data.date}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {data.serviceName}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {data?.payment?.amount ? (
+                            <button disabled className="btn">
+                              Paid
+                            </button>
+                          ) : (
+                            <Link to={`/dashbord/pay/${data._id}`}>
                               {' '}
-                              Procced to pay{' '}
-                            </button>{' '}
-                          </Link>
-                        )}
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
+                              <button className="btn">
+                                {' '}
+                                Procced to pay{' '}
+                              </button>{' '}
+                            </Link>
+                          )}
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    ))
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>

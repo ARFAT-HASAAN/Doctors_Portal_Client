@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
+  CircularProgress,
 } from '@mui/material'
 
 const AppoinmentPopup = ({
@@ -19,6 +20,10 @@ const AppoinmentPopup = ({
   toastfunc,
 }) => {
   const { user } = UseAuth()
+
+  // hooks
+
+  const [loading, setloading] = useState(false)
 
   // default user data
   const patientInfo = {
@@ -41,6 +46,7 @@ const AppoinmentPopup = ({
   const SubmitData = (e) => {
     e.preventDefault()
 
+    setloading(true)
     const newPatient = {
       ...patientData,
       serviceName: appoinment.title,
@@ -55,6 +61,7 @@ const AppoinmentPopup = ({
       )
       .then((res) => {
         if (res.data.acknowledged) {
+          setloading(false)
           handleClose()
           toastfunc()
         }
@@ -141,6 +148,7 @@ const AppoinmentPopup = ({
           >
             Deny
           </Button>
+
           <Button
             sx={{
               backgroundColor: '#15D1C1',
@@ -150,7 +158,7 @@ const AppoinmentPopup = ({
             }}
             onClick={SubmitData}
           >
-            Send
+            {loading ? <CircularProgress /> : 'Send'}
           </Button>
         </DialogActions>
       </Dialog>

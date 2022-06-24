@@ -16,7 +16,7 @@ const AppoinmentModal = ({ appoinment, date, toast }) => {
   }
 
   return (
-    <Grid item xs={13} sm={13} md={6} lg={4}>
+    <Grid id="appoinmentGird" item xs={13} sm={13} md={6} lg={4}>
       <Paper sx={{}} elevation={3}>
         <Stack sx={{ textAlign: 'center', margin: 'auto' }} spacing={2}>
           <h4> {appoinment.title} </h4>

@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { makeStyles } from '@mui/styles'
 
 const Contact = () => {
-  // hooks 
+  // hooks
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -23,7 +23,7 @@ const Contact = () => {
     message: '',
   })
 
-  // input tacker function 
+  // input tacker function
   const TextTacker = (e) => {
     const Name = e.target.name
     const Value = e.target.value
@@ -32,8 +32,7 @@ const Contact = () => {
 
   const notify = () => toast('Congrats! Your message send.')
 
-  
-  // feedback submit form 
+  // feedback submit form
   const submitForm = (e) => {
     e.preventDefault()
     const Feedback = { ...query }
@@ -56,7 +55,7 @@ const Contact = () => {
       .finally(setQuery({ email: '', subject: '', message: '' }))
   }
 
-  // mui costome style made 
+  // mui costome style made
   const theme = useTheme()
   const costomStyle = makeStyles({
     input: {
@@ -92,85 +91,97 @@ const Contact = () => {
     },
   })
 
-  // mui costom class distruced 
+  // mui costom class distruced
   const { div, container } = costomStyle({})
 
   return (
-    <Box
-      id="Contact"
-      className={container}
-      sx={{
-        textAlign: 'center',
-        paddingY: '20px',
-      }}
-    >
-      <Container className={div}>
-        <Box>
-          <h4 className="blue biseHeader">CONTACT US</h4>
-          <h3 className="white divspace">Always Connect with us</h3>
+    <div>
+      <Box
+        id="Contact"
+        className={container}
+        sx={{
+          textAlign: 'center',
+          paddingY: '20px',
+        }}
+      >
+        <Container className={div}>
+          <div
+            data-aos="zoom-in-up"
+            data-aos-duration="2000"
+            data-aos-easing="ease-in-sine"
+          >
+            <Box>
+              <h4 className="blue biseHeader">CONTACT US</h4>
+              <h3 className="white divspace">Always Connect with us</h3>
 
-          <Box>
-            <ToastContainer />
-            <form>
-              <TextField
-                required
-                name="email"
-                onChange={TextTacker}
-                value={query?.email}
-                fullWidth
-                placeholder="Email"
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: '10px',
-                  marginBottom: '15px',
-                }}
-              />
-              <TextField
-                required
-                name="subject"
-                onChange={TextTacker}
-                value={query.subject}
-                fullWidth
-                placeholder="Subject"
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: '10px',
-                  fontWeight: 'bold',
-                  marginBottom: '15px',
-                }}
-              />
-              <TextField
-                required
-                name="message"
-                onChange={TextTacker}
-                value={query.message}
-                fullWidth
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: '10px',
-                  outlineColor: 'blue',
-                  borderColor: 'blue',
-                  marginBottom: '15px',
-                }}
-                placeholder="Your Message"
-                rows={4}
-                multiline
-              />
               <Box>
-                {!loading ? (
-                  <button className="btn" type="submit" onClick={submitForm}>
-                    Submit
-                  </button>
-                ) : (
-                  <CircularProgress />
-                )}
+                <ToastContainer />
+                <form>
+                  <TextField
+                    required
+                    name="email"
+                    onChange={TextTacker}
+                    value={query?.email}
+                    fullWidth
+                    placeholder="Email"
+                    sx={{
+                      backgroundColor: 'white',
+                      borderRadius: '10px',
+                      marginBottom: '15px',
+                    }}
+                  />
+                  <TextField
+                    required
+                    name="subject"
+                    onChange={TextTacker}
+                    value={query.subject}
+                    fullWidth
+                    placeholder="Subject"
+                    sx={{
+                      backgroundColor: 'white',
+                      borderRadius: '10px',
+                      fontWeight: 'bold',
+                      marginBottom: '15px',
+                    }}
+                  />
+                  <TextField
+                    required
+                    name="message"
+                    onChange={TextTacker}
+                    value={query.message}
+                    fullWidth
+                    sx={{
+                      backgroundColor: 'white',
+                      borderRadius: '10px',
+                      outlineColor: 'blue',
+                      borderColor: 'blue',
+                      marginBottom: '15px',
+                    }}
+                    placeholder="Your Message"
+                    rows={4}
+                    multiline
+                  />
+                  <Box>
+                    {!loading ? (
+                      <button
+                        className="btn"
+                        type="submit"
+                        onClick={submitForm}
+                      >
+                        Submit
+                      </button>
+                    ) : (
+                      <CircularProgress />
+                    )}
+                  </Box>
+                </form>
+                <p>{error} </p>
               </Box>
-            </form>
-            <p>{error} </p>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+            </Box>
+          </div>
+        </Container>
+      </Box>
+    </div>
   )
 }
 

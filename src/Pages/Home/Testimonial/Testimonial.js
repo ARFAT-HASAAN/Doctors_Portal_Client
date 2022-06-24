@@ -39,103 +39,109 @@ const Testimonial = () => {
   const { div, container } = costomDiv({})
 
   return (
-    <Box className={container} id="verticleHeight">
-      <Container className={div}>
-        <Box>
+    <div
+      data-aos="flip-down"
+      data-aos-duration="2000"
+      data-aos-easing="ease-in-sine"
+    >
+      <Box className={container} id="verticleHeight">
+        <Container className={div}>
           <Box>
-            <h4 className="blue semibiseHeader">TESTIMONIAL</h4>
-            <h3 className="divspace">What"s Our Patients Says</h3>
+            <Box>
+              <h4 className="blue semibiseHeader">TESTIMONIAL</h4>
+              <h3 className="divspace">What"s Our Patients Says</h3>
+            </Box>
+
+            <Grid container gap={2} columns={13}>
+              <Grid item xs={13} sm={13} md={4} lg={4}>
+                <Card sx={{ padding: '16px' }}>
+                  <CardContent>
+                    <Stack spacing={4}>
+                      <p className="gray">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Laborum quibusdam temporibus magnam dolore provident
+                        recusandae alias quo. Eos incidunt, error aliquam unde
+                        enim facilis culpa corrupti cum ex totam rem!
+                      </p>
+                      <Box
+                        gap={4}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <img src={peopleOne} alt="" />
+
+                        <Stack>
+                          <h5 className="blue">DR.Caudi</h5>
+                          <p className="gray">California</p>
+                        </Stack>
+                      </Box>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={13} sm={13} md={4} lg={4}>
+                <Card sx={{ padding: '16px' }}>
+                  <CardContent>
+                    <Stack spacing={4}>
+                      <p className="gray">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Laborum quibusdam temporibus magnam dolore provident
+                        recusandae alias quo. Eos incidunt, error aliquam unde
+                        enim facilis culpa corrupti cum ex totam rem!
+                      </p>
+                      <Box
+                        gap={4}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <img src={peopleTwo} alt="" />
+
+                        <Stack>
+                          <h5 className="blue">DR.Caudi</h5>
+                          <p className="gray">California</p>
+                        </Stack>
+                      </Box>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={13} sm={13} md={4} lg={4}>
+                <Card sx={{ padding: '16px' }}>
+                  <CardContent>
+                    <Stack spacing={4}>
+                      <p className="gray">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Laborum quibusdam temporibus magnam dolore provident
+                        recusandae alias quo. Eos incidunt, error aliquam unde
+                        enim facilis culpa corrupti cum ex totam rem!
+                      </p>
+                      <Box
+                        gap={4}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <img src={peopleTree} alt="" />
+
+                        <Stack>
+                          <h5 className="blue">DR.Caudi</h5>
+                          <p className="gray">California</p>
+                        </Stack>
+                      </Box>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
           </Box>
-
-          <Grid container gap={2} columns={13}>
-            <Grid item xs={13} sm={13} md={4} lg={4}>
-              <Card sx={{ padding: '16px' }}>
-                <CardContent>
-                  <Stack spacing={4}>
-                    <p className="gray">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Laborum quibusdam temporibus magnam dolore provident
-                      recusandae alias quo. Eos incidunt, error aliquam unde
-                      enim facilis culpa corrupti cum ex totam rem!
-                    </p>
-                    <Box
-                      gap={4}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <img src={peopleOne} alt="" />
-
-                      <Stack>
-                        <h5 className="blue">DR.Caudi</h5>
-                        <p className="gray">California</p>
-                      </Stack>
-                    </Box>
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={13} sm={13} md={4} lg={4}>
-              <Card sx={{ padding: '16px' }}>
-                <CardContent>
-                  <Stack spacing={4}>
-                    <p className="gray">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Laborum quibusdam temporibus magnam dolore provident
-                      recusandae alias quo. Eos incidunt, error aliquam unde
-                      enim facilis culpa corrupti cum ex totam rem!
-                    </p>
-                    <Box
-                      gap={4}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <img src={peopleTwo} alt="" />
-
-                      <Stack>
-                        <h5 className="blue">DR.Caudi</h5>
-                        <p className="gray">California</p>
-                      </Stack>
-                    </Box>
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={13} sm={13} md={4} lg={4}>
-              <Card sx={{ padding: '16px' }}>
-                <CardContent>
-                  <Stack spacing={4}>
-                    <p className="gray">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Laborum quibusdam temporibus magnam dolore provident
-                      recusandae alias quo. Eos incidunt, error aliquam unde
-                      enim facilis culpa corrupti cum ex totam rem!
-                    </p>
-                    <Box
-                      gap={4}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <img src={peopleTree} alt="" />
-
-                      <Stack>
-                        <h5 className="blue">DR.Caudi</h5>
-                        <p className="gray">California</p>
-                      </Stack>
-                    </Box>
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+    </div>
   )
 }
 

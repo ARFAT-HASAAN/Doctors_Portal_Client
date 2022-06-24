@@ -19,6 +19,7 @@ const Usefirebase = () => {
   const auth = getAuth()
   const [user, setUser] = useState({})
   const [isAdmin, setIsAdmin] = useState(false)
+  const [islogin, setislogin] = useState(false)
   const [isloading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
   const [token, setToken] = useState('')
@@ -26,11 +27,13 @@ const Usefirebase = () => {
   //   newUser
   const newUser = (email, password) => {
     setIsLoading(true)
+    // setislogin(true)ff
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
   //   oldUser
   const oldUser = (email, password) => {
+    setislogin(true)
     setIsLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
   }
@@ -38,6 +41,7 @@ const Usefirebase = () => {
   //   logout
   const logOut = () => {
     setIsLoading(true)
+    setislogin(false)
     signOut(auth)
       .then(() => {
         setUser({})
@@ -51,6 +55,7 @@ const Usefirebase = () => {
   //   setProfile
   const userProfile = (name) => {
     setIsLoading(true)
+    // setislogin(true)
     updateProfile(auth.currentUser, {
       displayName: name,
     })
@@ -130,6 +135,8 @@ const Usefirebase = () => {
     isAdmin,
     setIsAdmin,
     token,
+    islogin,
+    setislogin,
   }
 }
 
